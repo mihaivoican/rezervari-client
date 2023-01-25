@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Loc: {{rezervare.nrLoc}}</h1>
+<div mat-dialog-content>
+  <!-- <p>What's your favorite animal?</p> -->
+  <mat-form-field appearance="fill">
+    <mat-label>E-mail</mat-label>
+    <input matInput [(ngModel)]="rezervare.email">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Telefon</mat-label>
+    <input matInput [(ngModel)]="rezervare.telefon">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="rezervare" cdkFocusInitial>Ok</button>
+</div>

@@ -1,0 +1,11 @@
+.main-data {
+    display:flex;
+    flex-direction: column;
+    margin-right: 30px;
+}
+
+.form-columns {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}

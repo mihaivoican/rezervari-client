@@ -1,0 +1,21 @@
+.locuri-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 500px;
+}
+.loc-rezervat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: thin solid;
+    padding: 12px;
+    width: 25px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.loc-rezervat.ocupat{
+    background: crimson;
+    cursor: auto;
+}

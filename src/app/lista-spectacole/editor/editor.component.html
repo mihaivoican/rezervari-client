@@ -1,0 +1,68 @@
+<div class="editor-spectacol">
+    <h1 mat-dialog-title>{{spectacol.nume}}</h1>
+    <div mat-dialog-content class="form-columns">
+      <!-- <p>What's your favorite animal?</p> -->
+      <div class="main-data">
+        <mat-form-field appearance="fill">
+            <mat-label>Nume spectacol</mat-label>
+            <input matInput [(ngModel)]="spectacol.nume">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Nr locuri</mat-label>
+            <input matInput [(ngModel)]="spectacol.nrLocuri">
+        </mat-form-field>
+        <!-- <mat-form-field appearance="fill" class="example-form-field">
+            <mat-label>Alege o data</mat-label>
+            <input matInput [matDatepicker]="datepicker" [(ngModel)]="spectacol.dataStart">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+            <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+            </mat-datepicker-actions>
+            </mat-datepicker>
+        </mat-form-field> -->
+        <mat-form-field appearance="fill">
+            <mat-label>Alege interval de date</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Data start" [(ngModel)]="spectacol.dataStart" >
+            <input matEndDate placeholder="Data final" [(ngModel)]="spectacol.dataFinal">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <div class="intervale-data">
+        <button mat-raised-button (click)="addInterval()" class="demo-button">
+            Add data
+          </button>
+        <div *ngFor="let interval of spectacol.intervale">
+            <mat-form-field appearance="fill" class="example-form-field">
+                <mat-label>Alege o data</mat-label>
+                <input matInput [matDatepicker]="datepicker" [(ngModel)]="interval.zi">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+                </mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill" [style.width]="'100px'">
+                <mat-label>Alege ora</mat-label>
+                <input matInput [(ngModel)]="interval.ora">
+            </mat-form-field>
+            <button mat-raised-button (click)="deleteInterval(interval)" class="demo-button">
+                Sterge
+              </button>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelEdit()">Close</button>
+      <button mat-button (click)="saveSpectacol()" cdkFocusInitial>Ok</button>
+    </div> 
+</div>

@@ -1,0 +1,34 @@
+<p>
+    ID spectacol = {{id}} - {{spectacol?spectacol.nume:''}}
+</p>
+
+<mat-form-field appearance="fill">
+    <mat-label>Selectati ziua</mat-label>
+    <mat-select [(ngModel)]="selectedDate" (selectionChange)="ziSelectata($event)">
+      <mat-option *ngFor="let zi of listaZile" [value]="zi">
+        {{zi | date:'dd.MM.yyyy'}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Selectati ora</mat-label>
+    <mat-select [(ngModel)]="selectedOra" (ngModelChange)="oraSelectata($event)" >
+      <mat-option *ngFor="let ora of listaOre" [value]="ora">
+        {{ora}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="locuri-container" *ngIf="selectedInterval">
+    <div *ngFor="let e of [].constructor(spectacol.nrLocuri); let i = index">
+        <div class="loc-rezervat" [ngClass]="getLocOcupat(i+1)?'ocupat':''" [matTooltip]="getRezervareTooltip(i+1)" (click)="rezervareLoc(i+1)">
+            {{i + 1}}
+        </div>
+    </div>
+  </div>
+<div>
+    <button mat-raised-button (click)="back()" class="demo-button">
+        Inapoi la lista
+    </button>
+</div>
