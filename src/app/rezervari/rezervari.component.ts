@@ -94,8 +94,8 @@ export class RezervariComponent implements OnInit {
         console.log(result);
         if(result){
           // salvam intervalul pe backend
+          this.selectedInterval.rezervari.push(rezervare);
           this.service.saveInterval(this.selectedInterval).then(() => {
-            this.selectedInterval.rezervari.push(rezervare);
           });
         }
       });            
@@ -104,7 +104,7 @@ export class RezervariComponent implements OnInit {
     getRezervareTooltip(nrLoc:any){
       let rez = this.selectedInterval.rezervari.find((r:any) => r.nrLoc === nrLoc)
       if(rez){
-        return `Rezerval de ${rez.email} `
+        return `Rezervat de: ${rez.email} `
       }else{
         return ''
       }
