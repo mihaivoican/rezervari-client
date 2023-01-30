@@ -30,6 +30,7 @@ export interface Rezervare {
   providedIn: 'root'
 })
 export class SpectacolService {
+  // aici pun toate metodele care fac request catre server
   saveInterval(selectedInterval: any) {
     return this.http.put(`http://localhost:8080/intervale/${selectedInterval.id}`, selectedInterval).toPromise();
   }
